@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itcast.mapper.UserMapper">
+
+    <resultMap id="result" type="com.itcast.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
+        <result column="realName" jdbcType="VARCHAR" property="realName" />
+    </resultMap>
+
+    <delete id="delete" parameterType="int">
+        DELETE  from user where id = #{id}
+    </delete>
+
+    <select id="findUserByName" resultMap="result">
+        select * from user where userName = #{NAME}
+    </select>
+
+    <insert id="insertUser" parameterType="com.itcast.entity.User"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO user(id,userName,passWord,realName)
+        VALUES (#{id},#{userName},#{passWord},#{realName})
+    </insert>
+
+    <update id="update" parameterType="com.itcast.entity.User">
+        UPDATE user set user.userName=#{userName},user.passWord=#{passWord},user.realName=#{realName} where id=#{id}
+    </update>
+
+    <select id="listUser" resultMap="result">
+        SELECT * from USER
+    </select>
+</mapper>    
