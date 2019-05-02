@@ -14,6 +14,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
+
 public class CRUDTest {
     @Autowired
     private UserService userService;
